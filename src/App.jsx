@@ -1,8 +1,21 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+import About from "./pages/About";
+import Profile from "./pages/Profile";
+
 const App = () => {
   return (
-    <div className="bg-red-500 text-black p-10 text-8xl">
-      If this is red, Tailwind works ✅
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
