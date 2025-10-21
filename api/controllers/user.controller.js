@@ -1,5 +1,5 @@
 export const test = (req, res) => {
   res.json({
-    message: "Hello from user route!!!!!!!!!",
+    message: "Hello from user route!",
   });
 };
