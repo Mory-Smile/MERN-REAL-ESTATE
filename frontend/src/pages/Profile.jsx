@@ -36,8 +36,8 @@ const Profile = () => {
       if (res.ok) {
         console.log("Uploaded Image URL:", data.url);
         setImage(data.url);
-        const updateRes = await fetch(`/api/user/${currentUser._id}`, {
-          method: "PUT",
+        const updateRes = await fetch(`/api/user/update/${currentUser._id}`, {
+          method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ avatar: data.url }),
         });
@@ -68,24 +68,25 @@ const Profile = () => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
+  console.log(formData);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(updateStart());
     try {
-      const res = await fetch(`/api/user/${currentUser._id}`, {
-        method: "PUT",
+      const res = await fetch(`/api/user/update/${currentUser._id}`, {
+        method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
       const data = await res.json();
+      console.log(data);
       if (!res.ok) {
         dispatch(updateFailure(data.message));
         return;
       }
-      if (res.ok) {
-        dispatch(updateSuccess(data));
-        alert("Profile updated successfully");
-      }
+      dispatch(updateSuccess(data));
+      alert("Profile updated successfully");
     } catch (error) {
       dispatch(updateFailure());
     }

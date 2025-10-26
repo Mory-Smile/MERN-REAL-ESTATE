@@ -1,6 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
+
 import userRouter from "./routes/user.route.js";
 import authRouter from "./routes/auth.route.js";
 import uploadRouter from "./routes/upload.route.js";
@@ -17,6 +19,7 @@ mongoose
   });
 
 const app = express();
+app.use(cookieParser());
 app.use(express.json());
 
 // app.get("/", (req, res) => {
