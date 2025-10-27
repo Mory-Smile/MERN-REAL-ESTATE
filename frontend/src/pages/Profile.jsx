@@ -1,3 +1,4 @@
+import { useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   setUser,
@@ -11,7 +12,7 @@ import {
   signOutUserSuccess,
   signOutUserFailure,
 } from "../redux/user/userSlice";
-import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const { currentUser, loading, error } = useSelector((state) => state.user);
@@ -175,11 +176,17 @@ const Profile = () => {
         >
           {uploading || loading ? "Loading..." : "Update"}
         </button>
+        <Link
+          className="bg-green-700 text-white rounded-lg p-3 cursor-pointer uppercase hover:opacity-85 disabled:opacity-70 transition duration-200 text-center"
+          to="/create-listing"
+        >
+          Create Listing
+        </Link>
       </form>
       <div className="flex justify-between mt-5">
         <span
           onClick={handleDeleteUser}
-          className="text-red-700 cursor-pointer"
+          className="text-red-700 p-2 cursor-pointer hover:bg-red-500 hover:text-white transition duration-300 rounded-md"
         >
           Delete Account
         </span>
