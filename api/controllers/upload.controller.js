@@ -14,17 +14,14 @@ cloudinary.config({
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-// Controller function
 export const uploadImage = async (req, res) => {
   try {
     if (!req.file) return res.status(400).json({ error: "No file uploaded." });
 
-    // Check file type
     if (!req.file.mimetype.startsWith("image/")) {
       return res.status(400).json({ error: "Only image uploads allowed." });
     }
 
-    // Check file size (2MB limit)
     if (req.file.size > 2 * 1024 * 1024) {
       return res.status(400).json({ error: "Image size exceeds 2MB limit." });
     }
@@ -43,5 +40,4 @@ export const uploadImage = async (req, res) => {
   }
 };
 
-// Export multer middleware so router can use it
 export const uploadMiddleware = upload.single("image");
