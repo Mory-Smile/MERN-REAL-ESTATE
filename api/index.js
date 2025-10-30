@@ -15,6 +15,7 @@ mongoose
   .then(() => {
     console.log("Connected to MongoDB");
   })
+  .catch((err) => console.error("DB error:", err))
   .catch((err) => {
     console.error(err);
   });
@@ -22,11 +23,6 @@ mongoose
 const app = express();
 app.use(cookieParser());
 app.use(express.json());
-
-// app.get("/", (req, res) => {
-//   res.json({ message: "Hello World!" });
-//   // res.send("Hello World!");
-// });
 
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
