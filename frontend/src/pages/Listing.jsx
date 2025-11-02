@@ -4,6 +4,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
 import { Navigation } from "swiper/modules";
 import "swiper/css/bundle";
+import {
+  FaBath,
+  FaBed,
+  FaChair,
+  FaMapMarkerAlt,
+  FaParking,
+} from "react-icons/fa";
 
 const Listing = () => {
   SwiperCore.use([Navigation]);
@@ -33,6 +40,7 @@ const Listing = () => {
     };
     fetchListing();
   }, [params.listingId]);
+  console.log(listing);
   return (
     <>
       <main>
@@ -52,6 +60,62 @@ const Listing = () => {
                   ></div>
                 </SwiperSlide>
               ))}
+              <div className="font-semibold text-3xl py-2 pl-10 w-full flex justify-center flex-col items-start">
+                <div className="flex gap-2 py-5">
+                  <h1>{listing.name}</h1>
+                  <p>
+                    {` - $ ${
+                      listing.discountPrice
+                        ? listing.discountPrice
+                        : listing.regularPrice
+                    }`}
+                    {listing.type === "rent" && " / month"}
+                  </p>
+                </div>
+                <p className="flex justify-center items-center gap-2 text-slate-600 my-3 mb-4 text-sm">
+                  <FaMapMarkerAlt className="text-blue-700" />
+                  {listing.address}
+                </p>
+                <div className="flex gap-5 max-w-[50%]">
+                  <p className="bg-red-900 w-full max-w-[20rem] text-white text-center text-2xl py-3 px-6 rounded-md">
+                    {listing.type === "rent" ? "For Rent" : "For Sale"}
+                  </p>
+                  {listing.offer && (
+                    <p className="bg-blue-900 w-full max-w-[20rem] text-white text-center text-2xl py-3 px-6 rounded-md flex items-center justify-center">
+                      ${+listing.regularPrice - +listing.discountPrice}
+                    </p>
+                  )}
+                </div>
+
+                <p className="text-slate-800 py-5">
+                  <span className="font-semibold text-black">
+                    Description - {"  "}
+                  </span>
+                  {listing.description}
+                </p>
+                <ul className="text-blue-900 font-semibold text-[0.9rem] sm:text-[1.15rem] flex flex-wrap gap-4 sm:gap-6 items-center">
+                  <li className="flex items-center gap-1 whitespace-nowrap">
+                    <FaBed className="text-3xl" />
+                    {listing.bedrooms > 1
+                      ? `${listing.bedrooms} beds`
+                      : `${listing.bedrooms} bed `}
+                  </li>
+                  <li className="flex items-center gap-1 whitespace-nowrap">
+                    <FaBath className="text-3xl" />
+                    {listing.bathrooms > 1
+                      ? `${listing.bathrooms} baths`
+                      : `${listing.bathrooms} bath `}
+                  </li>
+                  <li className="flex items-center gap-1 whitespace-nowrap">
+                    <FaParking className="text-3xl" />
+                    {listing.parking ? "Parking spot" : "No Parking"}
+                  </li>
+                  <li className="flex items-center gap-1 whitespace-nowrap">
+                    <FaChair className="text-3xl" />
+                    {listing.furnished ? "Furnished" : "Unfurnished"}
+                  </li>
+                </ul>
+              </div>
             </Swiper>
           </div>
         )}
