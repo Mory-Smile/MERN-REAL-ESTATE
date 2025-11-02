@@ -163,7 +163,7 @@ const UpdateListing = () => {
         setError(data.message);
       }
       alert("The listing was updated successfully!");
-      navigate(`/profile`);
+      navigate(`/listing/${data._id}`);
     } catch (error) {
       setError(error.message);
       setLoading(false);
