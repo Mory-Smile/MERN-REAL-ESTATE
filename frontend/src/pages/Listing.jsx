@@ -11,7 +11,10 @@ import {
   FaMapMarkerAlt,
   FaParking,
 } from "react-icons/fa";
+<<<<<<< HEAD
 import Contact from "../components/Contact";
+=======
+>>>>>>> 5590a66ba72f952845be14998d3b1e72b447000b
 
 const Listing = () => {
   SwiperCore.use([Navigation]);
@@ -42,6 +45,7 @@ const Listing = () => {
     };
     fetchListing();
   }, [params.listingId]);
+  console.log(listing);
   return (
     <>
       <main>
@@ -61,7 +65,11 @@ const Listing = () => {
                   ></div>
                 </SwiperSlide>
               ))}
+<<<<<<< HEAD
               <div className="font-semibold text-3xl py-2 px-10 w-full flex justify-center flex-col items-start">
+=======
+              <div className="font-semibold text-3xl py-2 pl-10 w-full flex justify-center flex-col items-start">
+>>>>>>> 5590a66ba72f952845be14998d3b1e72b447000b
                 <div className="flex gap-2 py-5">
                   <h1>{listing.name}</h1>
                   <p>
@@ -77,7 +85,11 @@ const Listing = () => {
                   <FaMapMarkerAlt className="text-blue-700" />
                   {listing.address}
                 </p>
+<<<<<<< HEAD
                 <div className="flex gap-5 w-[50%]">
+=======
+                <div className="flex gap-5 max-w-[50%]">
+>>>>>>> 5590a66ba72f952845be14998d3b1e72b447000b
                   <p className="bg-red-900 w-full max-w-[20rem] text-white text-center text-2xl py-3 px-6 rounded-md">
                     {listing.type === "rent" ? "For Rent" : "For Sale"}
                   </p>
@@ -116,6 +128,7 @@ const Listing = () => {
                     {listing.furnished ? "Furnished" : "Unfurnished"}
                   </li>
                 </ul>
+<<<<<<< HEAD
                 <button
                   onClick={() => setContact(true)}
                   className="bg-slate-700 text-white rounded-lg uppercase hover:opacity-85 p-3 my-5 w-full"
@@ -123,6 +136,8 @@ const Listing = () => {
                   Contact landlord
                 </button>
                 {contact && <Contact listing={listing} />}
+=======
+>>>>>>> 5590a66ba72f952845be14998d3b1e72b447000b
               </div>
             </Swiper>
           </div>
