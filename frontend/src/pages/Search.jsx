@@ -56,8 +56,10 @@ const Search = () => {
       const data = await res.json();
       if (data.length > 8) {
         setShowMore(true);
+        setLoading(false);
       } else {
         setShowMore(false);
+        setLoading(false);
       }
       setListings(data);
       setLoading(false);
