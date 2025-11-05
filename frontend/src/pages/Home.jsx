@@ -53,15 +53,18 @@ const Home = () => {
   return (
     <div>
       <div
-        className="flex flex-col gap-6 py-63 px-3 max-w-6xl mx-auto bg-cover bg-center"
-        style={{ backgroundImage: `url(${RealEstate})` }}
+        className="flex flex-col gap-5 pt-50 pb-75 px-3 max-w-6xl mx-auto bg-cover bg-center"
+        style={{
+          background: `url(${RealEstate}) center no-repeat`,
+          backgroundSize: "cover",
+        }}
       >
-        <h1 className="text-slate-700 font-bold text-3xl lg:text-6xl">
+        <h1 className="text-slate-700 font-bold text-3xl lg:text-6xl pb-10">
           Find your next <span className="text-gray-800">perfect</span>
           <br />
           place with ease
         </h1>
-        <div className="text-black text-sm sm:text-lg">
+        <div className="text-black text-sm sm:text-xl pb-5">
           Mora Real Estate is the best place to find your next perfect place to
           live.
           <br />
