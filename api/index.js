@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 import userRouter from "./routes/user.route.js";
 import authRouter from "./routes/auth.route.js";
@@ -23,6 +24,12 @@ mongoose
 const app = express();
 app.use(cookieParser());
 app.use(express.json());
+app.use(
+  cors({
+    origin: ["https://https://moraestate.vercel.app"],
+    credentials: true,
+  })
+);
 
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
